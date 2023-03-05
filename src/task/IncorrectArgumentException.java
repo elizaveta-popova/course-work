@@ -4,7 +4,7 @@ public class IncorrectArgumentException extends TaskNotFoundException {
     private String argument;
 
     public IncorrectArgumentException(String message) {
-        super(message);
+        super(Integer.valueOf(message));
     }
 
     public String getArgument() {

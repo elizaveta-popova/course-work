@@ -5,8 +5,8 @@ import java.time.LocalDateTime;
 
 public class YearlyTask extends Task {
 
-    public YearlyTask(String title, Type type, int id, LocalDateTime dateTime, String description) {
-        super(title, type, id, dateTime, description);
+    public YearlyTask(String title, Type type, LocalDateTime dateTime, String description) {
+        super(title, type, dateTime, description);
     }
 
     public boolean appearsIn(LocalDate localDate) {

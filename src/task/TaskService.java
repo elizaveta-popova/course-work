@@ -3,34 +3,30 @@ package task;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeSet;
+import java.util.*;
 
 public class TaskService {
-    private final Map<Integer, Task> tasks=new HashMap<>();
+    public final Map<Integer, Task> taskMap = new TreeMap<>();
+    public final Collection<Task> removedTask = new ArrayList<>();
 
-    public void addTask(Task task){
-        this.tasks.put(task.getId(),task);
+    public void add(Task task) {
+        this.taskMap.put(task.getId(), task);
+    }
+    public void remove(Integer taskId) throws TaskNotFoundException {
+        if (this.taskMap.containsKey(taskId)) {
+            taskMap.remove(taskId);
+        } else {
+            throw new TaskNotFoundException(taskId);
+        }
     }
 
-    public Collection<Task> getAllTasks (){
-        return this.tasks.values();
-    }
-
-    public Collection<Task> getTaskForDate(LocalDate date){
-        TreeSet<Task> tasksForDate=new TreeSet<>();
-        for(Task task:tasks.values()){
-            if(task.appearsIn(date)){
-                tasksForDate.add(task);
+    public Collection<Task> getAllByDate(LocalDate date) {
+        List<Task> tasks = new LinkedList<>();
+        for (Map.Entry<Integer, Task> entry : taskMap.entrySet()) {
+            if (entry.getValue().appearsIn(date)) {
+                tasks.add(entry.getValue());
             }
         }
-        return tasksForDate;
-    }
-    public void removeTask(int id)throws TaskNotFoundException{
-        if(this.tasks.containsKey(id)){
-            this.tasks.remove(id);
-        }else{
-            throw new TaskNotFoundException("Error");
-        }
+        return tasks;
     }
 }

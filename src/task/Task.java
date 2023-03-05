@@ -13,7 +13,7 @@ public abstract class Task {
     private String description;
 
 
-    public Task(String title, Type type, int id, LocalDateTime dateTime, String description) {
+    public Task(String title, Type type, LocalDateTime dateTime, String description) {
         this.title = title;
         this.type = type;
         this.id = idGenerator++;

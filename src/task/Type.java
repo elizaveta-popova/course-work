@@ -3,12 +3,7 @@ package task;
 public enum Type {
 
     WORK("рабочие задачи"),
-    PERSONAL("личные задачи"),
-    ONE("однократная"),
-    DAILY("ежедневная"),
-    WEEKLY("еженедельная"),
-    MONTHLY("ежемесячная"),
-    YEARLY("ежегодная");
+    PERSONAL("личные задачи");
     private String type;
 
     Type(String type) {

@@ -10,8 +10,8 @@ public class MonthlyTask extends Task {
     }
 
     public boolean appearsIn(LocalDate localDate) {
-        return localDate.isAfter(getDateTime().toLocalDate())
-                || localDate.isEqual(getDateTime().toLocalDate())
-                && localDate.getDayOfMonth() == getDateTime().getDayOfMonth();
+        LocalDate dateTime = this.getDateTime().toLocalDate();
+        return localDate.equals(dateTime) ||
+                (localDate.isAfter(getDateTime().toLocalDate()) && localDate.getDayOfMonth() == getDateTime().getDayOfMonth());
     }
 }

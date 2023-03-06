@@ -10,9 +10,10 @@ public class YearlyTask extends Task {
     }
 
     public boolean appearsIn(LocalDate localDate) {
-        return localDate.isAfter(getDateTime().toLocalDate())
-                || localDate.isEqual(getDateTime().toLocalDate())
-                && localDate.getDayOfYear() == getDateTime().getDayOfYear();
+        LocalDate dateTime = getDateTime().toLocalDate();
+        return localDate.equals(dateTime) ||
+                (localDate.isAfter(dateTime) && localDate.isEqual(getDateTime().toLocalDate())
+                && localDate.getDayOfYear() == getDateTime().getDayOfYear());
     }
 
 }
